@@ -111,16 +111,10 @@ def game_state(mat):
             if j==0:
                 return "NOT OVER"
     for i in range(3):
-        for j in range(4):
-            if i<3:
-                if mat[i][j]==mat[i+1][j]:
-                    return "NOT OVER"
-    for i in range(4):
         for j in range(3):
-            print(f"{j} {i}")
-            if j<3:
-                if mat[i][j]==[i][j+1]:
-                    return "NOT OVER"
+            if mat[i][j]==mat[i+1][j] or mat[i][j]==mat[i][j+1]:
+                return "NOT OVER"
+        
     return "OVER"
 
 def start():
