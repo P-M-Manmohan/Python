@@ -80,6 +80,7 @@ def right(mat):
     return mat
 
 def down(mat):
+    temp=mat
     for i in range(2,-1,-1):
         for j in range(4):
             k=i
@@ -89,7 +90,7 @@ def down(mat):
                 mat[k][l]=0
                 k+=1
     mat=merge(mat,'s')
-    return mat
+    return mat 
 
 
 
@@ -109,10 +110,17 @@ def game_state(mat):
         for j in i:
             if j==0:
                 return "NOT OVER"
-    for i in range(4):
+    for i in range(3):
         for j in range(4):
-            if mat[i][j]==mat[i+1][j] or mat[i][j]==[i][j+1]:
-                return "NOT OVER"
+            if i<3:
+                if mat[i][j]==mat[i+1][j]:
+                    return "NOT OVER"
+    for i in range(4):
+        for j in range(3):
+            print(f"{j} {i}")
+            if j<3:
+                if mat[i][j]==[i][j+1]:
+                    return "NOT OVER"
     return "OVER"
 
 def start():
@@ -125,23 +133,35 @@ def start():
     for i in range(4):
         mat.append([0]*4)
     add_2(mat)
+    add_2(mat)
     while True:
-        add_2(mat)
         for i in mat:
             print(i)
+        if game_state(mat)=="OVER":
+            print("You lose")
+            exit()
+        elif game_state(mat)=="WON":
+            print("Congratulations you win")
+            exit()
         move=input("Move > ")
         if move.upper()=="W":
             mat= up(mat)
+            mat=up(mat)
+            add_2(mat)
         elif move.upper()=="A":
             left(mat)
+            left(mat)
+            add_2(mat)
         elif move.upper()=="D":
             right(mat)
+            right(mat)
+            add_2(mat)
         elif move.upper()=="S":
             down(mat)
-        if game_state(mat)=="OVER":
-            print("You lose")
-        elif game_state(mat)=="WON":
-            print("Congratulations you win")
+            down(mat)
+            add_2(mat)
+        else:
+            print("invalid input")
 
 
 if __name__=="__main__":
