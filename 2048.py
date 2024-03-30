@@ -114,20 +114,26 @@ def game_state(mat):
         for j in range(3):
             if mat[i][j]==mat[i+1][j] or mat[i][j]==mat[i][j+1]:
                 return "NOT OVER"
+    for i in range(3):
+        if mat[i][3]==mat[i+1][j]:
+            return "NOT OVER"
+    for j in range(3):
+        if mat[3][j]==mat[3][j+1]:
+            return "NOT OVER"
         
     return "OVER"
 
 def start():
-    print("W for up")
-    print("A for left")
-    print("D for right")
-    print("S for down")
 
     mat=[]
     for i in range(4):
         mat.append([0]*4)
     add_2(mat)
     add_2(mat)
+    print("W for up")
+    print("A for left")
+    print("D for right")
+    print("S for down")
     while True:
         for i in mat:
             print(i)
