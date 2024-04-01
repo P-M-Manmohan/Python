@@ -26,6 +26,8 @@ def getNetworkdata(cmd,filter1,filter2,part):
             req_info.append(i)#new list with only two networks that matter
     return req_info
 
+def connect(connection):
+    os.system(f'netsh wlan connect name="{connection}"')#command to connect to wifi
 
 def wifilogin(conf):
     hotspot=conf['Wifi']['hotspot']#get hotspot name
@@ -37,14 +39,14 @@ def wifilogin(conf):
     for i in Networks:
         AvailableNetworks+=i #create single strign to make it easier to search
     if (hotspot not in AvailableNetworks) and (wifi in AvailableNetworks):#if hotspot not available but wifi is
-        os.system(f'netsh wlan connect name="{wifi}"')#run command to connect to wifi
+        connect(wifi)#connect to wifi
         login(conf,"username","password","loginbutton")
         print("connected to student")
     elif hotspot in AvailableNetworks:
-        os.system(f'netsh wlan connect name="{hotspot}"')# connec to hotspot
+        connect(hotspot)# connec to hotspot
         print("connected to hotspot")
     else:
-        print("nothing happened")#if neither are availabel exit
+        print("nothing happened")#if neither are available exit
         exit()
 
 if __name__=="__main__":
