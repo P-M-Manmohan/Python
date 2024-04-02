@@ -11,10 +11,14 @@ def login(conf,userID,passID,button):#extra login required for college wifi logi
     url=conf['Student_user']['url']
     user=conf['Student_user']['id']
     pas=conf['Student_user']['password']
+    options=webdriver.FirefoxOptions()
+    options.add_argument('--headless')#made it work on headless broswer to avoid browser pop up
+    driver=webdriver.Firefox(options=options)
     driver.get(url)#open webpage
     driver.find_element(by=By.ID,value=userID).send_keys(user)#enter userid
     driver.find_element(by=By.ID,value=passID).send_keys(pas)#enter password
     driver.find_element(by=By.ID,value=button).click()#click login
+    driver.quit()#close browser
 
 def getNetworkdata(cmd,filter1,filter2,part):
     wifi=subprocess.check_output(cmd)#get all available networks
