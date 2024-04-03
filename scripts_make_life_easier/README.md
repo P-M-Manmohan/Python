@@ -1,4 +1,4 @@
-# wifilogin.py
+# wifilogin.pyw
 
 This is a script I made to connect to my college wifi that required user login each time i connected.
 It also connects to my hotspot if it is available else to the college wifi
