@@ -52,7 +52,7 @@ def wifilogin(conf):
         exit()
 
 if __name__=="__main__":
-    #time.sleep(15)
+    time.sleep(15)
     with open('C:\\Users\\manu6\\OneDrive\\Documents\\scripts\\make_life_easier\\details.yml','r') as details:
         conf=yaml.load(details,Loader=yaml.FullLoader)
     wifilogin(conf)
