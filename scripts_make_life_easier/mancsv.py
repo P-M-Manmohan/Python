@@ -10,19 +10,22 @@ def exctract_from_csv(file,fields):#take fiL and list of columns required
         csv_reader=csv.reader(csv_file)
         header=next(csv_reader)#take first row (header)
         field=[]
+        csv_list=list(csv_reader)
+        length=len(csv_list)
         for i in fields: 
             field.append(header.index(i))#tkae index of required fields from header
         group=list(zip(field, range(list_len)))#group together the field nad the index of list its values will be enteed into
+        print(group)
         for k in group:   
-            print(k)
-            i=k[0]
-            j=k[1]
-            for row in csv_reader:
-               lis[j].append(row[i])#trying to input values of each column in each list now only entering one column
+            x=k[0]
+            y=k[1]
+            for a in range(length):
+               csv_file.seek(0)#reseting to begining of csv
+               lis[y].append(csv_list[a][x])#input values of each column in each list now only entering one column
     for i in range(len(lis[0])):
-         print(lis[0][i],"\t",print[1][i])
-    positive=op.countOf(lis[1],"Positive")
-    print(positive, (len(lis[1])-positive))#find numeber of positive and negative feedback
+        for j in range(list_len): 
+            print(lis[j][i],end="      ")
+        print()
 
 
 if __name__=="__main__":
