@@ -22,10 +22,6 @@ def exctract_from_csv(file,fields):#take fiL and list of columns required
                csv_file.seek(1)#reseting to begining of csv
                lis[y].append(csv_list[a][x])#input values of each column in each list now only entering one column
     return lis
-    for i in range(len(lis[0])):
-        for j in range(list_len): 
-            print(lis[j][i],end="      ")
-        print()
 
 
 if __name__=="__main__":
