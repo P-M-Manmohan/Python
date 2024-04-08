@@ -15,13 +15,13 @@ def exctract_from_csv(file,fields):#take fiL and list of columns required
         for i in fields: 
             field.append(header.index(i))#tkae index of required fields from header
         group=list(zip(field, range(list_len)))#group together the field nad the index of list its values will be enteed into
-        print(group)
         for k in group:   
             x=k[0]
             y=k[1]
             for a in range(length):
-               csv_file.seek(0)#reseting to begining of csv
+               csv_file.seek(1)#reseting to begining of csv
                lis[y].append(csv_list[a][x])#input values of each column in each list now only entering one column
+    return lis
     for i in range(len(lis[0])):
         for j in range(list_len): 
             print(lis[j][i],end="      ")
@@ -29,4 +29,10 @@ def exctract_from_csv(file,fields):#take fiL and list of columns required
 
 
 if __name__=="__main__":
-    exctract_from_csv("onlinefoods.csv",['Monthly Income','Feedback'])
+    FILE_NAME="onlinefoods.csv"
+    FIELDS=['Gender','Occupation','Feedback']
+    lis=exctract_from_csv(FILE_NAME,FIELDS)
+    for i in range(len(lis[0])):
+        for j in range(len(FIELDS)): 
+            print(lis[j][i],end="      ")
+        print()
