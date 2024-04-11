@@ -1,5 +1,6 @@
 import csv
-import operator as op
+import sys
+from sys import argv
 
 def exctract_from_csv(file,fields):#take fiL and list of columns required
     list_len=len(fields)#find number of columns
@@ -25,8 +26,11 @@ def exctract_from_csv(file,fields):#take fiL and list of columns required
 
 
 if __name__=="__main__":
-    FILE_NAME="onlinefoods.csv"
-    FIELDS=['Gender','Occupation','Feedback']
+    FILE_NAME=argv[1]
+    arg_len=len(sys.argv)
+    FIELDS=[]
+    for i in range (2,arg_len):
+        FIELDS.append(argv[i])
     lis=exctract_from_csv(FILE_NAME,FIELDS)
     for i in range(len(lis[0])):
         for j in range(len(FIELDS)): 
